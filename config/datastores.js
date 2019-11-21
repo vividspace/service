@@ -51,6 +51,12 @@ module.exports.datastores = {
     // adapter: 'sails-mysql',
     // url: 'mysql://user:password@host:port/database',
 
+    //webServiceMongodbServer: {
+      adapter: 'sails-mongo',
+      url: process.env.MONGOLAB_URI,
+      schema: false
+    //}
+
   },
 
 

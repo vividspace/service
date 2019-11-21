@@ -19,7 +19,11 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': { view: 'pages/homepage' },
+  // '/': { view: 'pages/homepage' },
+  'post /create':{controller: "UserController", action:"create", skipAssets: true},
+  'get /users':{controller:"UserController", action:"findall", skipAssets:true},
+  'post /ranking':{controller:"UserController", action:"setRanking", skipAssets:true},
+  'post /update':{controller:"UserController", action:"update", skipAssets:true},
 
 
   /***************************************************************************
