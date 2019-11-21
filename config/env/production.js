@@ -151,6 +151,9 @@ module.exports = {
       // allowOrigins: [
       //   'https://example.com',
       // ]
+      allRoutes: true,
+      allowOrigins: '*',
+      allowCredentials: false
     },
 
   },
