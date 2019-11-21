@@ -29,8 +29,11 @@ module.exports.security = {
   ***************************************************************************/
 
   cors: {
-    allRoutes: false,
-    allowOrigins: '*',
+    //allRoutes: false,
+    //allowOrigins: '*',
+    allowOrigins: [
+      "http://vivid-space.com","https://vivid-space.com",
+    ],
     allowCredentials: false,
   },
 

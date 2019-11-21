@@ -36,9 +36,6 @@ module.exports.session = {
   //   return !!req.path.match(req._sails.LOOKS_LIKE_ASSET_RX);
   // },
 
-  adapter: 'connect-redis',
-  host: 'panga.redistogo.com',
-  port: 9925,
-  url: process.env.REDISTOGO_URL
+  
 
 };

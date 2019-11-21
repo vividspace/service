@@ -59,6 +59,10 @@ module.exports = {
       //  ```
       //--------------------------------------------------------------------------
 
+      adapter: 'sails-mongo',
+      url: process.env.MONGOLAB_URI,
+      schema: false,
+
       /****************************************************************************
       *                                                                           *
       * More adapter-specific options                                             *
@@ -148,12 +152,9 @@ module.exports = {
     *                                                                          *
     ***************************************************************************/
     cors: {
-      // allowOrigins: [
-      //   'https://example.com',
-      // ]
-      allRoutes: true,
-      allowOrigins: '*',
-      allowCredentials: false
+      allowOrigins: [
+        "http://vivid-space.com","https://vivid-space.com",
+      ]
     },
 
   },
@@ -189,6 +190,12 @@ module.exports = {
     ***************************************************************************/
     // adapter: '@sailshq/connect-redis',
     // url: 'redis://user:password@localhost:6379/databasenumber',
+
+    adapter: 'connect-redis',
+    // host: 'panga.redistogo.com',
+    // port: 9925,
+    url: process.env.REDISTOGO_URL,
+
     //--------------------------------------------------------------------------
     // /\   OR, to avoid checking it in to version control, you might opt to
     // ||   set sensitive credentials like this using an environment variable.
@@ -224,7 +231,7 @@ module.exports = {
     *                                                                          *
     ***************************************************************************/
     cookie: {
-      // secure: true,
+      secure: true,
       maxAge: 24 * 60 * 60 * 1000,  // 24 hours
     },
 
@@ -258,6 +265,10 @@ module.exports = {
     //   'https://staging.example.com',
     // ],
 
+    onlyAllowOrigins: [
+      "http://vivid-space.com","https://vivid-space.com",
+    ],
+
 
     /***************************************************************************
     *                                                                          *
@@ -273,6 +284,10 @@ module.exports = {
     ***************************************************************************/
     // adapter: '@sailshq/socket.io-redis',
     // url: 'redis://user:password@bigsquid.redistogo.com:9562/databasenumber',
+
+    adapter: 'connect-redis',
+    url: process.env.REDISTOGO_URL,
+
     //--------------------------------------------------------------------------
     // /\   OR, to avoid checking it in to version control, you might opt to
     // ||   set sensitive credentials like this using an environment variable.
@@ -325,7 +340,7 @@ module.exports = {
     * (https://sailsjs.com/config/http)                                        *
     *                                                                          *
     ***************************************************************************/
-    // trustProxy: true,
+    trustProxy: true,
 
   },
 
