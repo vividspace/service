@@ -190,13 +190,15 @@ module.exports = {
     ***************************************************************************/
      adapter: '@sailshq/connect-redis',
     // url: 'redis://user:password@localhost:6379/databasenumber',
-    //redis://redistogo:f42a51e9726f681efa5e0c9dc5d7d015@porgy.redistogo.com:11277/1
-    //url:'redis://redistogo:f42a51e9726f681efa5e0c9dc5d7d015@porgy.redistogo.com:11277/1',
-
 
     //adapter: 'connect-redis',
     // host: 'panga.redistogo.com',
     // port: 9925,
+    host:process.env.REDIS_HOST, 
+    port: process.env.REDIS_PORT,
+    db: process.env.REDIS_DB,
+    pass: process.env.REDIS_PASSWORD,
+
     url: process.env.REDISTOGO_URL,
 
     //--------------------------------------------------------------------------
