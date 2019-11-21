@@ -54,7 +54,8 @@ module.exports.datastores = {
     //webServiceMongodbServer: {
       adapter: 'sails-mongo',
       url: process.env.MONGOLAB_URI,
-      schema: false
+      //url: 'mongodb://@127.0.0.1:27017/admin',
+      //schema: false
     //}
 
   },

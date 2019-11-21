@@ -24,17 +24,17 @@ module.exports = {
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
 
 
-    isDeleted: { type: 'boolean', defaultsTo: false, },
-    upvotes: { type: 'number' },
-    numComments: { type: 'number' },
-    views: { type: 'number' }
+    // isDeleted: { type: 'boolean', defaultsTo: false, },
+    // upvotes: { type: 'number' },
+    // numComments: { type: 'number' },
+    // views: { type: 'number' }
 
   },
 
-  customToJSON: function() {
-    // Return a shallow copy of this record with the password and ssn removed.
-    return _.omit(this, ['isDeleted'])
-  },
+  // customToJSON: function() {
+  //   // Return a shallow copy of this record with the password and ssn removed.
+  //   return _.omit(this, ['isDeleted'])
+  // },
 
 };
 

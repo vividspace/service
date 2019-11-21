@@ -59,8 +59,8 @@ module.exports = {
       //  ```
       //--------------------------------------------------------------------------
 
-      // adapter: 'sails-mongo',
-      // url: process.env.MONGOLAB_URI,
+      adapter: 'sails-mongo',
+      url: process.env.MONGOLAB_URI,
       //schema: false,
 
       /****************************************************************************
@@ -74,7 +74,7 @@ module.exports = {
       * https://sailsjs.com/config/datastores                                     *
       *                                                                           *
       ****************************************************************************/
-      // ssl: true,
+      //ssl: true,
 
     },
 
@@ -188,10 +188,13 @@ module.exports = {
     * > (For a full list, see https://sailsjs.com/plugins/sessions)            *
     *                                                                          *
     ***************************************************************************/
-    // adapter: '@sailshq/connect-redis',
+     adapter: '@sailshq/connect-redis',
     // url: 'redis://user:password@localhost:6379/databasenumber',
+    //redis://redistogo:f42a51e9726f681efa5e0c9dc5d7d015@porgy.redistogo.com:11277/1
+    //url:'redis://redistogo:f42a51e9726f681efa5e0c9dc5d7d015@porgy.redistogo.com:11277/1',
 
-    adapter: 'connect-redis',
+
+    //adapter: 'connect-redis',
     // host: 'panga.redistogo.com',
     // port: 9925,
     url: process.env.REDISTOGO_URL,
