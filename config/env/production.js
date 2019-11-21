@@ -59,8 +59,8 @@ module.exports = {
       //  ```
       //--------------------------------------------------------------------------
 
-      adapter: 'sails-mongo',
-      url: process.env.MONGOLAB_URI,
+      // adapter: 'sails-mongo',
+      // url: process.env.MONGOLAB_URI,
       //schema: false,
 
       /****************************************************************************
