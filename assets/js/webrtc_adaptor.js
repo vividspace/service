@@ -1,79 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta charset="UTF-8">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-    crossorigin="anonymous">
-    <style>
-            video {
-                width: 100%;
-                max-width: 640px;
-            }
-            /* Space out content a bit */
-            body {
-                padding-top: 20px;
-                padding-bottom: 20px;
-            }
-            /* Everything but the jumbotron gets side spacing for mobile first views */
-            .header, .marketing, .footer {
-                padding-right: 15px;
-                padding-left: 15px;
-            }
-            /* Custom page header */
-            .header {
-                padding-bottom: 20px;
-                border-bottom: 1px solid #e5e5e5;
-            }
-            /* Make the masthead heading the same height as the navigation */
-            .header h3 {
-                margin-top: 0;
-                margin-bottom: 0;
-                line-height: 40px;
-            }
-            /* Custom page footer */
-            .footer {
-                padding-top: 19px;
-                color: #777;
-                border-top: 1px solid #e5e5e5;
-            }
-            /* Customize container */
-            @media ( min-width : 768px) {
-                .container {
-                    max-width: 730px;
-                }
-            }
-            .container-narrow>hr {
-                margin: 30px 0;
-            }
-            /* Main marketing message and sign up button */
-            .jumbotron {
-                text-align: center;
-                border-bottom: 1px solid #e5e5e5;
-            }
-            /* Responsive: Portrait tablets and up */
-            @media screen and (min-width: 768px) {
-                /* Remove the padding we set earlier */
-                .header, .marketing, .footer {
-                    padding-right: 0;
-                    padding-left: 0;
-                }
-                /* Space out the masthead */
-                .header {
-                    margin-bottom: 30px;
-                }
-                /* Remove the bottom border on the jumbotron for visual effect */
-                .jumbotron {
-                    border-bottom: 0;
-                }
-            }
-            </style>
-<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
-<script > 
-    /**
+/**
  *
  * @returns
  */
@@ -921,11 +846,14 @@ function WebRTCAdaptor(initialValues)
 			}
 		}
 		
-		var sendPing = function() {			
+		var sendPing = function() {
+			wsConn.send
+			
 			var jsCmd = {
 					command : "ping"
 			};
 			wsConn.send(JSON.stringify(jsCmd));
+
 		}
 		
 		this.close = function() {
@@ -939,7 +867,7 @@ function WebRTCAdaptor(initialValues)
 
 			pingTimerId = setInterval(() => {
 				sendPing();
-			}, 3000);
+			}, 5000);
 			
 			connected = true;
 			thiz.callback("initialized");
@@ -1027,111 +955,3 @@ function WebRTCAdaptor(initialValues)
 		
 	}
 }
-
-</script>
-<script>
-    var pc_config = null;
-
-var sdpConstraints = {
-    OfferToReceiveAudio : false,
-    OfferToReceiveVideo : false
-
-};
-var mediaConstraints = {
-    video : true,
-    audio : true
-};
-
-var webRTCAdaptor = new WebRTCAdaptor({
-    websocket_url : "ws://" + location.hostname + ":"+location.port+"/WebRTCAppEE",
-    mediaConstraints : mediaConstraints,
-    peerconnection_config : pc_config,
-    sdp_constraints : sdpConstraints,
-    localVideoId : "localVideo",
-    callback : function(info) {
-        if (info == "initialized") 
-                    {
-            console.log("initialized");
-  webRTCAdaptor.publish("test2");
-            
-        } 
-                    else if (info == "publish_started") 
-                    {
-            //stream is being published 
-            console.log("publish started");	
-        } 
-                    else if (info == "publish_finished") 
-                    {
-            //stream is finished
-            console.log("publish finished");
-        } 
-                    else if (info == "screen_share_extension_available") 
-                    {
-                            //screen share extension is avaiable
-            console.log("screen share extension available");
-        } 
-                    else if (info == "screen_share_stopped") 
-                    {
-                             //"Stop Sharing" is clicked in chrome screen share dialog
-            console.log("screen share stopped");
-        }
-
-    },
-    callbackError : function(error) {
-        //some of the possible errors, NotFoundError, SecurityError,PermissionDeniedError
-
-        console.log("error callback: " + error);
-        alert(error);
-    }
-});
-</script>
-<script>
-        var pc_config = null;
-
-var sdpConstraints = {
-    OfferToReceiveAudio : true,
-    OfferToReceiveVideo : true
-
-};
-var mediaConstraints = {
-    video : true,
-    audio : true
-};
-
-var webRTCAdaptor = new WebRTCAdaptor({
-    websocket_url : "ws://" + location.hostname + ":"+ location.port +"/WebRTCAppEE",
-    mediaConstraints : mediaConstraints,
-    peerconnection_config : pc_config,
-    sdp_constraints : sdpConstraints,
-    remoteVideoId : "remoteVideo",
-    isPlayMode: true,
-    callback : function(info) {
-        if (info == "initialized") {
-            console.log("initialized");
-
-            webRTCAdaptor.play("test2");
-        
-        } else if (info == "play_started") {
-            //play_started
-            console.log("play started");
-        
-        } else if (info == "play_finished") {
-            // play finishedthe stream
-            console.log("play finished");
-            
-        }
-    },
-    callbackError : function(error) {
-        //some of the possible errors, NotFoundError, SecurityError,PermissionDeniedError
-
-        console.log("error callback: " + error);
-        alert(error);
-    }
-});
-    </script>
-</head>
-<body>
-        <video id="localVideo" autoplay muted width="480"></video>
-        <video id="remoteVideo" autoplay controls></video>
-</body>
-</html>
